@@ -1,0 +1,602 @@
+import base64
+import os
+import sys
+import random
+import textwrap
+import uuid
+from io import BytesIO
+
+import requests
+from PIL import Image, ImageDraw, ImageFont
+
+def generate_base64_picture(game, result, player_name, player_photo_url, base64_player_photo):
+
+    if game.slug == "admin-which-words-best-describe-your-personality":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-words-best-describe-your-personality.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 56
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+
+    elif game.slug == "admin-which-bollywood-actor-you-look-like-to":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-bollywood-actor-you-look-like-to.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-bollywood-actress-suits-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-bollywood-actress-suits-you.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-hollywood-actress-suits-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-hollywood-actress-suits-you.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-pakistani-actress-suits-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-pakistani-actress-suits-you.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-marvel-character-suits-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-marvel-character-suits-you.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-indian-cricketer-you-look-like-to":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-indian-cricketer-you-look-like-to.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-pakistani-cricketer-you-look-like-to":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-pakistani-cricketer-you-look-like-to.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-superhero-you-look-like-to":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-superhero-you-look-like-to.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-which-car-suits-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-which-car-suits-you.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-who-loves-you-in-secret":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-who-loves-you-in-secret.png"
+
+        background = Image.open(background_path)
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 300, 300
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = 60
+        y_axis = 90
+        background.paste(avatar, (x_axis, y_axis))
+
+
+        second_photo = Image.open(result.image.path)
+        second_photo_width, second_photo_height = 300, 300
+        second_photo = second_photo.resize((second_photo_width, second_photo_height), Image.ANTIALIAS)
+
+        x_axis = 445
+        y_axis = 90
+        background.paste(second_photo, (x_axis, y_axis))
+
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
+
+    elif game.slug == "admin-what-donald-trump-tweets-about-you":
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/admin-what-donald-trump-tweets-about-you.png"
+
+        background = Image.open(background_path)
+        draw = ImageDraw.Draw(background)
+        bg_width, bg_height = background.size
+        font = ImageFont.truetype(font=font_path, size=18)
+
+        tweet_text = player_name + ", " + result.text
+
+        char_width, char_height = font.getsize('A')
+        chars_per_line = (bg_width // char_width) + 30
+
+        tweet_text_lines = textwrap.wrap(tweet_text, width=chars_per_line)
+
+        y = 80
+        for line in tweet_text_lines:
+            line_width, line_height = font.getsize(line)
+            x = 10
+            draw.text((x, y), line, fill='black', font=font)
+            y += line_height
+
+
+        filename = str(uuid.uuid4()) + ".png"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        return base64Picture
+
+    else:
+        top_text = game.title
+        bottom_text = result.text
+
+        SCRIPTS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        backgrounds_folder = os.path.join(SCRIPTS_FOLDER, "backgrounds")
+        font_folder = os.path.join(SCRIPTS_FOLDER, "spectral")
+        sys.path.append(SCRIPTS_FOLDER)
+
+        font_path = font_folder + "/Spectral-Regular.ttf"
+        background_path = backgrounds_folder + "/" + random.choice(os.listdir(backgrounds_folder))
+
+        background = Image.open(background_path)
+        draw = ImageDraw.Draw(background)
+        bg_width, bg_height = background.size
+        font = ImageFont.truetype(font=font_path, size=int(bg_height/18))
+
+        bottom_text = player_name + ", " + bottom_text
+
+        char_width, char_height = font.getsize('A')
+        chars_per_line = (bg_width // char_width) + 10
+
+        top_lines = textwrap.wrap(top_text, width=chars_per_line)
+        bottom_lines = textwrap.wrap(bottom_text, width=chars_per_line)
+
+        y = 15
+        for line in top_lines:
+            line_width, line_height = font.getsize(line)
+            x = (bg_width - line_width) / 2
+            draw.text((x, y), line, fill='white', font=font)
+            y += line_height
+
+        y = bg_height - char_height * len(bottom_lines) - 75
+        for line in bottom_lines:
+            line_width, line_height = font.getsize(line)
+            x = (bg_width - line_width)/2
+            draw.text((x, y), line, fill='white', font=font)
+            y += line_height
+
+        # res = requests.get(player_photo_url)
+        # avatar = Image.open(BytesIO(res.content))
+
+        base64_str = base64_player_photo.replace("data:image/jpeg;base64,", "")
+        decoded_img = base64.b64decode(base64_str)
+        avatar_filename = str(uuid.uuid4()) + ".jpg"
+        with open(avatar_filename, 'wb') as f:
+            f.write(decoded_img)
+
+        avatar = Image.open(avatar_filename)
+        avatar_width, avatar_height = 150, 150
+        avatar = avatar.resize((avatar_width, avatar_height), Image.ANTIALIAS)
+
+        x_axis = int((bg_width / 2) - (avatar_width / 2))
+        y_axis = 150 if len(top_lines) <= 2 else 225
+        background.paste(avatar, (x_axis, y_axis))
+
+        filename = str(uuid.uuid4()) + ".jpg"
+        background.save(filename)
+
+        with open(filename, "rb") as image_file:
+            base64Picture = base64.b64encode(image_file.read())
+
+        os.remove(filename)
+        os.remove(avatar_filename)
+        return base64Picture
